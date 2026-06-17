@@ -14,6 +14,9 @@ public partial class MainWindow : Window
     // Optional seed data provider for first-time runs.
     private readonly AssignmentService _assignmentService = new();
 
+    // Preset gear items used to auto-fill the form from the dropdown.
+    private List<GearItem> _gearPresets = [];
+
     // Keeps track of the row selected in the DataGrid.
     private GearItem? _selectedGearItem;
 
@@ -23,6 +26,9 @@ public partial class MainWindow : Window
 
         // Prepare the 24-hour time dropdown.
         PopulateInspectionTimeDropdown();
+
+        // Load the preset gear catalog for quick form population.
+        LoadGearPresets();
 
         // Set a sensible default inspection date/time.
         SetDefaultInspectionDateTime();
@@ -46,6 +52,15 @@ public partial class MainWindow : Window
         {
             cbInspectionTime.Items.Add(time.ToString(@"hh\:mm", CultureInfo.InvariantCulture));
         }
+    }
+
+    // Loads preset gear items so the user can pick a ready-made example from the dropdown.
+    private void LoadGearPresets()
+    {
+        _gearPresets = _assignmentService.GetGearPresets();
+        cbGearPreset.ItemsSource = _gearPresets;
+        cbGearPreset.DisplayMemberPath = nameof(GearItem.GearName);
+        cbGearPreset.SelectedIndex = -1;
     }
 
     // Gives the form a ready-to-use default date/time.
@@ -107,6 +122,7 @@ public partial class MainWindow : Window
         txtLocation.Clear();
         txtNotes.Clear();
 
+        cbGearPreset.SelectedIndex = -1;
         _selectedGearItem = null;
         GearGrid.SelectedItem = null;
 
@@ -114,7 +130,7 @@ public partial class MainWindow : Window
     }
 
     // Builds a GearItem from the form inputs.
-    private GearItem? GetGearItemFromForm()
+    private GearItem? BuildGearItemFromForm(bool includeId)
     {
         if (string.IsNullOrWhiteSpace(txtGearName.Text) ||
             string.IsNullOrWhiteSpace(txtCategory.Text))
@@ -146,7 +162,7 @@ public partial class MainWindow : Window
 
         return new GearItem
         {
-            Id = _selectedGearItem?.Id ?? 0,
+            Id = includeId ? _selectedGearItem?.Id ?? 0 : 0,
             GearName = txtGearName.Text.Trim(),
             Category = txtCategory.Text.Trim(),
             Brand = string.IsNullOrWhiteSpace(txtBrand.Text) ? null : txtBrand.Text.Trim(),
@@ -160,7 +176,7 @@ public partial class MainWindow : Window
 
     private void Add_Click(object sender, RoutedEventArgs e)
     {
-        var gearItem = GetGearItemFromForm();
+        var gearItem = BuildGearItemFromForm(includeId: false);
         if (gearItem is null)
         {
             return;
@@ -179,7 +195,7 @@ public partial class MainWindow : Window
             return;
         }
 
-        var gearItem = GetGearItemFromForm();
+        var gearItem = BuildGearItemFromForm(includeId: true);
         if (gearItem is null)
         {
             return;
@@ -226,6 +242,7 @@ public partial class MainWindow : Window
             return;
         }
 
+        cbGearPreset.SelectedIndex = -1;
         _selectedGearItem = selectedItem;
 
         txtGearName.Text = selectedItem.GearName;
@@ -240,6 +257,36 @@ public partial class MainWindow : Window
         {
             dpInspectionDate.SelectedDate = selectedItem.LastInspectionDate.Value.Date;
             cbInspectionTime.SelectedItem = selectedItem.LastInspectionDate.Value.ToString("HH:mm", CultureInfo.InvariantCulture);
+        }
+        else
+        {
+            SetDefaultInspectionDateTime();
+        }
+    }
+
+    // When a preset is selected, the form auto-fills with the preset values.
+    private void GearPreset_SelectionChanged(object sender, SelectionChangedEventArgs e)
+    {
+        if (cbGearPreset.SelectedItem is not GearItem preset)
+        {
+            return;
+        }
+
+        _selectedGearItem = null;
+        GearGrid.SelectedItem = null;
+
+        txtGearName.Text = preset.GearName;
+        txtCategory.Text = preset.Category;
+        txtBrand.Text = preset.Brand ?? string.Empty;
+        txtQuantity.Text = preset.Quantity.ToString();
+        txtCondition.Text = preset.Condition ?? string.Empty;
+        txtLocation.Text = preset.Location ?? string.Empty;
+        txtNotes.Text = preset.Notes ?? string.Empty;
+
+        if (preset.LastInspectionDate is not null)
+        {
+            dpInspectionDate.SelectedDate = preset.LastInspectionDate.Value.Date;
+            cbInspectionTime.SelectedItem = preset.LastInspectionDate.Value.ToString("HH:mm", CultureInfo.InvariantCulture);
         }
         else
         {

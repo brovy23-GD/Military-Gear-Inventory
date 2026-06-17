@@ -62,6 +62,7 @@ UI       → MainWindow.xaml + button events
 - Update selected gear items
 - Delete gear items
 - Seed sample records for demo use
+- Choose from a preset gear dropdown to auto-fill the form
 - Army / infantry color theme
 - Military-style date and time input
 
@@ -99,6 +100,11 @@ Rovy Assignment 11.1/
 - Tactical Helmet
 - Battle Vest
 - Field Radio
+- Night Vision Goggles
+- Combat Boots
+- Camouflage Uniform
+- Medical Kit
+- Ammo Pouch
 
 ---
 

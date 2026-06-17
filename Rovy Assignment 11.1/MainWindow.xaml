@@ -62,77 +62,91 @@
 
         <!-- Input form -->
         <Border Grid.Row="1" Background="{StaticResource PanelBrush}" CornerRadius="8" Padding="15" Margin="0,0,0,15">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-
-                <!-- Row 0 -->
-                <StackPanel Grid.Row="0" Grid.Column="0">
-                    <Label Content="Gear Name" />
-                    <TextBox x:Name="txtGearName" />
+            <StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,0,0,12" VerticalAlignment="Center">
+                    <Label Content="Gear Preset" Width="120" />
+                    <ComboBox x:Name="cbGearPreset"
+                              Width="420"
+                              Height="30"
+                              Margin="0,4,12,8"
+                              SelectionChanged="GearPreset_SelectionChanged" />
+                    <TextBlock VerticalAlignment="Center"
+                               Foreground="{StaticResource LightTextBrush}"
+                               Text="Choose a preset to auto-fill the form." />
                 </StackPanel>
 
-                <StackPanel Grid.Row="0" Grid.Column="1">
-                    <Label Content="Category" />
-                    <TextBox x:Name="txtCategory" />
-                </StackPanel>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
 
-                <StackPanel Grid.Row="0" Grid.Column="2">
-                    <Label Content="Brand" />
-                    <TextBox x:Name="txtBrand" />
-                </StackPanel>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="2*"/>
+                    </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Row="0" Grid.Column="3">
-                    <Label Content="Quantity" />
-                    <TextBox x:Name="txtQuantity" />
-                </StackPanel>
+                    <!-- Row 0 -->
+                    <StackPanel Grid.Row="0" Grid.Column="0">
+                        <Label Content="Gear Name" />
+                        <TextBox x:Name="txtGearName" />
+                    </StackPanel>
 
-                <!-- Row 1 -->
-                <StackPanel Grid.Row="1" Grid.Column="0">
-                    <Label Content="Condition" />
-                    <TextBox x:Name="txtCondition" />
-                </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="1">
+                        <Label Content="Category" />
+                        <TextBox x:Name="txtCategory" />
+                    </StackPanel>
 
-                <StackPanel Grid.Row="1" Grid.Column="1">
-                    <Label Content="Location" />
-                    <TextBox x:Name="txtLocation" />
-                </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="2">
+                        <Label Content="Brand" />
+                        <TextBox x:Name="txtBrand" />
+                    </StackPanel>
 
-                <StackPanel Grid.Row="1" Grid.Column="2">
-                    <Label Content="Inspection Date" />
-                    <DatePicker x:Name="dpInspectionDate"
-                                 Height="30"
-                                 Margin="0,4,0,8"
-                                 SelectedDateFormat="Short" />
-                </StackPanel>
+                    <StackPanel Grid.Row="0" Grid.Column="3">
+                        <Label Content="Quantity" />
+                        <TextBox x:Name="txtQuantity" />
+                    </StackPanel>
 
-                <StackPanel Grid.Row="1" Grid.Column="3">
-                    <Label Content="Inspection Time (24-Hour)" />
-                    <ComboBox x:Name="cbInspectionTime"
-                               Height="30"
-                               Margin="0,4,0,8" />
-                </StackPanel>
+                    <!-- Row 1 -->
+                    <StackPanel Grid.Row="1" Grid.Column="0">
+                        <Label Content="Condition" />
+                        <TextBox x:Name="txtCondition" />
+                    </StackPanel>
 
-                <!-- Row 2 -->
-                <StackPanel Grid.Row="2" Grid.ColumnSpan="4">
-                    <Label Content="Notes" />
-                    <TextBox x:Name="txtNotes"
-                              Height="70"
-                              AcceptsReturn="True"
-                              TextWrapping="Wrap"
-                              VerticalScrollBarVisibility="Auto" />
-                </StackPanel>
-            </Grid>
+                    <StackPanel Grid.Row="1" Grid.Column="1">
+                        <Label Content="Location" />
+                        <TextBox x:Name="txtLocation" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="2">
+                        <Label Content="Inspection Date" />
+                        <DatePicker x:Name="dpInspectionDate"
+                                     Height="30"
+                                     Margin="0,4,0,8"
+                                     SelectedDateFormat="Short" />
+                    </StackPanel>
+
+                    <StackPanel Grid.Row="1" Grid.Column="3">
+                        <Label Content="Inspection Time (24-Hour)" />
+                        <ComboBox x:Name="cbInspectionTime"
+                                   Height="30"
+                                   Margin="0,4,0,8" />
+                    </StackPanel>
+
+                    <!-- Row 2 -->
+                    <StackPanel Grid.Row="2" Grid.ColumnSpan="4">
+                        <Label Content="Notes" />
+                        <TextBox x:Name="txtNotes"
+                                  Height="70"
+                                  AcceptsReturn="True"
+                                  TextWrapping="Wrap"
+                                  VerticalScrollBarVisibility="Auto" />
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
         </Border>
 
         <!-- Buttons and grid -->
