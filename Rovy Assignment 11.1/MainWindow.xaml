@@ -1,0 +1,180 @@
+﻿<Window x:Class="MilitaryGearInventory.MainWindow"
+         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+         Title="Military Gear Inventory"
+         Height="700"
+         Width="1100"
+         WindowStartupLocation="CenterScreen"
+         Background="#1F2A1F">
+
+    <Window.Resources>
+        <!-- Army / infantry style color palette -->
+        <SolidColorBrush x:Key="ArmyGreenBrush" Color="#556B2F"/>
+        <SolidColorBrush x:Key="DarkOliveBrush" Color="#3B4A2A"/>
+        <SolidColorBrush x:Key="SandBrush" Color="#D2B48C"/>
+        <SolidColorBrush x:Key="LightTextBrush" Color="#F5F5F5"/>
+        <SolidColorBrush x:Key="PanelBrush" Color="#2E3A2E"/>
+
+        <Style TargetType="Button">
+            <Setter Property="Foreground" Value="{StaticResource LightTextBrush}" />
+            <Setter Property="Background" Value="{StaticResource ArmyGreenBrush}" />
+            <Setter Property="FontWeight" Value="Bold" />
+            <Setter Property="Height" Value="35" />
+            <Setter Property="Margin" Value="5" />
+            <Setter Property="BorderBrush" Value="{StaticResource SandBrush}" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style TargetType="TextBox">
+            <Setter Property="Height" Value="30" />
+            <Setter Property="Margin" Value="0,4,0,8" />
+            <Setter Property="Padding" Value="6" />
+            <Setter Property="Background" Value="#F8F5E8" />
+            <Setter Property="Foreground" Value="Black" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Foreground" Value="{StaticResource LightTextBrush}" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Margin" Value="0,4,0,0" />
+        </Style>
+    </Window.Resources>
+
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Header -->
+        <Border Background="{StaticResource DarkOliveBrush}" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+            <StackPanel>
+                <TextBlock Text="Military Gear Inventory"
+                            FontSize="26"
+                            FontWeight="Bold"
+                            Foreground="{StaticResource SandBrush}" />
+                <TextBlock Text="SQLite + WPF XAML + Code First"
+                            FontSize="14"
+                            Foreground="{StaticResource LightTextBrush}" />
+            </StackPanel>
+        </Border>
+
+        <!-- Input form -->
+        <Border Grid.Row="1" Background="{StaticResource PanelBrush}" CornerRadius="8" Padding="15" Margin="0,0,0,15">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="2*"/>
+                </Grid.ColumnDefinitions>
+
+                <!-- Row 0 -->
+                <StackPanel Grid.Row="0" Grid.Column="0">
+                    <Label Content="Gear Name" />
+                    <TextBox x:Name="txtGearName" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="1">
+                    <Label Content="Category" />
+                    <TextBox x:Name="txtCategory" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="2">
+                    <Label Content="Brand" />
+                    <TextBox x:Name="txtBrand" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="0" Grid.Column="3">
+                    <Label Content="Quantity" />
+                    <TextBox x:Name="txtQuantity" />
+                </StackPanel>
+
+                <!-- Row 1 -->
+                <StackPanel Grid.Row="1" Grid.Column="0">
+                    <Label Content="Condition" />
+                    <TextBox x:Name="txtCondition" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="1">
+                    <Label Content="Location" />
+                    <TextBox x:Name="txtLocation" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="2">
+                    <Label Content="Inspection Date" />
+                    <DatePicker x:Name="dpInspectionDate"
+                                 Height="30"
+                                 Margin="0,4,0,8"
+                                 SelectedDateFormat="Short" />
+                </StackPanel>
+
+                <StackPanel Grid.Row="1" Grid.Column="3">
+                    <Label Content="Inspection Time (24-Hour)" />
+                    <ComboBox x:Name="cbInspectionTime"
+                               Height="30"
+                               Margin="0,4,0,8" />
+                </StackPanel>
+
+                <!-- Row 2 -->
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="4">
+                    <Label Content="Notes" />
+                    <TextBox x:Name="txtNotes"
+                              Height="70"
+                              AcceptsReturn="True"
+                              TextWrapping="Wrap"
+                              VerticalScrollBarVisibility="Auto" />
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <!-- Buttons and grid -->
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,0,0,10">
+                <Button Content="Add" Width="120" Click="Add_Click"/>
+                <Button Content="Update" Width="120" Click="Update_Click"/>
+                <Button Content="Delete" Width="120" Click="Delete_Click"/>
+                <Button Content="Clear" Width="120" Click="Clear_Click"/>
+            </StackPanel>
+
+            <DataGrid x:Name="GearGrid"
+                       Grid.Row="1"
+                       AutoGenerateColumns="False"
+                       SelectionMode="Single"
+                       SelectionUnit="FullRow"
+                       Background="White"
+                       Foreground="Black"
+                       RowBackground="#F3F3F3"
+                       AlternatingRowBackground="#E6E6E6"
+                       IsReadOnly="True"
+                       SelectionChanged="GearGrid_SelectionChanged">
+
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="60"/>
+                    <DataGridTextColumn Header="Gear Name" Binding="{Binding GearName}" Width="150"/>
+                    <DataGridTextColumn Header="Category" Binding="{Binding Category}" Width="140"/>
+                    <DataGridTextColumn Header="Brand" Binding="{Binding Brand}" Width="120"/>
+                    <DataGridTextColumn Header="Qty" Binding="{Binding Quantity}" Width="70"/>
+                    <DataGridTextColumn Header="Condition" Binding="{Binding Condition}" Width="100"/>
+                    <DataGridTextColumn Header="Location" Binding="{Binding Location}" Width="120"/>
+                    <DataGridTextColumn Header="Last Inspection"
+                                         Binding="{Binding LastInspectionDate, StringFormat={}{0:yyyy-MM-dd HH:mm}}"
+                                         Width="150"/>
+                    <DataGridTextColumn Header="Notes" Binding="{Binding Notes}" Width="*"/>
+                </DataGrid.Columns>
+            </DataGrid>
+        </Grid>
+    </Grid>
+</Window>
