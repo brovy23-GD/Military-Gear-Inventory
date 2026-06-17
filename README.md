@@ -1,18 +1,11 @@
 # Military Gear Inventory
 
 <p align="center">
-  <img src="https://img.shields.io/badge/Chicago_Tech-Assignment-0B5D3B?style=for-the-badge" alt="Chicago Tech" />
-  <img src="https://img.shields.io/badge/Army_Themed-UI-556B2F?style=for-the-badge" alt="Army Themed" />
+  <img src="assets/chicago-tech-army-banner.svg" alt="Chicago Tech Army Themed Banner" />
 </p>
 
 <p align="center">
-  <img src="https://img.shields.io/badge/WPF-Desktop_App-4F7D4A?style=for-the-badge&logo=windows&logoColor=white" alt="WPF" />
-  <img src="https://img.shields.io/badge/SQLite-Local_DB-1F6FEB?style=for-the-badge&logo=sqlite&logoColor=white" alt="SQLite" />
-  <img src="https://img.shields.io/badge/.NET-8.0-512BD4?style=for-the-badge&logo=dotnet&logoColor=white" alt=".NET" />
-</p>
-
-<p align="center">
-  <strong>Chicago Tech military gear inventory app with an Army-themed WPF interface, SQLite, and EF Core Code First.</strong>
+  <strong>Chicago Tech military gear inventory app with an Army-themed WPF interface.</strong>
 </p>
 
 ---
