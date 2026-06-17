@@ -9,7 +9,8 @@ namespace MilitaryGearInventory;
 public partial class MainWindow : Window
 {
     // CRUD service for SQLite operations.
-    private readonly GearService _gearService = new();
+    // This uses the same interface/class pattern shown in the class example.
+    private readonly ICRUD _crud = new CRUD();
 
     // Optional seed data provider for first-time runs.
     private readonly AssignmentService _assignmentService = new();
@@ -34,7 +35,7 @@ public partial class MainWindow : Window
         SetDefaultInspectionDateTime();
 
         // Create the SQLite database if needed.
-        _gearService.InitializeDatabase();
+        _crud.InitializeDatabase();
 
         // Seed sample data only if the table is empty.
         SeedSampleDataIfNeeded();
@@ -94,21 +95,21 @@ public partial class MainWindow : Window
     // Inserts sample data only when the database starts empty.
     private void SeedSampleDataIfNeeded()
     {
-        if (_gearService.GetAllGearItems().Count > 0)
+        if (_crud.GetAllGearItems().Count > 0)
         {
             return;
         }
 
         foreach (var item in _assignmentService.GetSampleGearItems())
         {
-            _gearService.AddGearItem(item);
+            _crud.AddGearItem(item);
         }
     }
 
     // Refreshes the DataGrid from SQLite.
     private void LoadGearItems()
     {
-        GearGrid.ItemsSource = _gearService.GetAllGearItems();
+        GearGrid.ItemsSource = _crud.GetAllGearItems();
     }
 
     // Clears the form and restores default date/time values.
@@ -182,7 +183,7 @@ public partial class MainWindow : Window
             return;
         }
 
-        _gearService.AddGearItem(gearItem);
+        _crud.AddGearItem(gearItem);
         LoadGearItems();
         ClearForm();
     }
@@ -201,7 +202,7 @@ public partial class MainWindow : Window
             return;
         }
 
-        _gearService.UpdateGearItem(gearItem);
+        _crud.UpdateGearItem(gearItem);
         LoadGearItems();
         ClearForm();
     }
@@ -225,7 +226,7 @@ public partial class MainWindow : Window
             return;
         }
 
-        _gearService.DeleteGearItem(_selectedGearItem.Id);
+        _crud.DeleteGearItem(_selectedGearItem.Id);
         LoadGearItems();
         ClearForm();
     }
