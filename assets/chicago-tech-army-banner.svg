@@ -1,51 +1,89 @@
-<svg width="1200" height="320" viewBox="0 0 1200 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chicago Tech Army Themed Banner">
+<svg width="1600" height="480" viewBox="0 0 1600 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Chicago skyline with Army themed tech banner">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1200" y2="320" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#1E2A1A"/>
-      <stop offset="1" stop-color="#344A2A"/>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1A2430"/>
+      <stop offset="0.58" stop-color="#223A3A"/>
+      <stop offset="1" stop-color="#314A2B"/>
     </linearGradient>
-    <linearGradient id="glass" x1="0" y1="0" x2="1200" y2="0" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#556B2F" stop-opacity="0.15"/>
-      <stop offset="1" stop-color="#D2B48C" stop-opacity="0.12"/>
+    <linearGradient id="water" x1="0" y1="330" x2="1600" y2="480" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0E3A52"/>
+      <stop offset="1" stop-color="#0B2434"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="1150" y1="50" x2="1450" y2="250" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#D2B48C" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#D2B48C" stop-opacity="0"/>
     </linearGradient>
   </defs>
 
-  <rect width="1200" height="320" rx="28" fill="url(#bg)"/>
-  <rect x="20" y="20" width="1160" height="280" rx="22" fill="url(#glass)" stroke="#D2B48C" stroke-opacity="0.35"/>
+  <!-- sky -->
+  <rect width="1600" height="480" rx="32" fill="url(#sky)"/>
+  <circle cx="1240" cy="108" r="130" fill="url(#glow)"/>
+  <circle cx="1240" cy="108" r="58" fill="#D2B48C" opacity="0.88"/>
 
-  <path d="M0 245C110 215 170 265 270 235C360 208 425 230 525 200C630 168 715 225 820 188C925 150 995 210 1200 158V320H0V245Z" fill="#556B2F"/>
-  <path d="M0 272C130 238 192 292 300 258C390 230 468 255 565 220C662 185 756 245 860 208C960 175 1038 235 1200 190V320H0V272Z" fill="#6B7D3A" opacity="0.8"/>
-  <path d="M0 292C120 266 210 310 330 288C445 266 505 286 620 262C730 240 845 300 965 270C1065 245 1125 270 1200 252V320H0V292Z" fill="#B7A06D" opacity="0.55"/>
+  <!-- subtle grid / tech lines -->
+  <path d="M88 86H1512" stroke="#D2B48C" stroke-opacity="0.18" stroke-width="2" stroke-dasharray="8 12"/>
+  <path d="M120 140H1480" stroke="#7FA37A" stroke-opacity="0.16" stroke-width="1"/>
+  <path d="M150 176H1450" stroke="#7FA37A" stroke-opacity="0.12" stroke-width="1"/>
+  <path d="M180 212H1420" stroke="#7FA37A" stroke-opacity="0.1" stroke-width="1"/>
 
-  <path d="M110 232V148H150V232H110Z" fill="#D2B48C"/>
-  <path d="M150 232V120H192V232H150Z" fill="#C7B28B"/>
-  <path d="M192 232V164H240V232H192Z" fill="#A89160"/>
-  <path d="M240 232V98H288V232H240Z" fill="#D2B48C"/>
-  <path d="M288 232V136H338V232H288Z" fill="#C7B28B"/>
-  <path d="M338 232V112H390V232H338Z" fill="#A89160"/>
-  <path d="M390 232V156H444V232H390Z" fill="#D2B48C"/>
-  <path d="M444 232V88H500V232H444Z" fill="#C7B28B"/>
-  <path d="M500 232V132H556V232H500Z" fill="#A89160"/>
-  <path d="M556 232V72H612V232H556Z" fill="#D2B48C"/>
-  <path d="M612 232V124H666V232H612Z" fill="#C7B28B"/>
-  <path d="M666 232V92H720V232H666Z" fill="#A89160"/>
-  <path d="M720 232V146H774V232H720Z" fill="#D2B48C"/>
-  <path d="M774 232V106H832V232H774Z" fill="#C7B28B"/>
-  <path d="M832 232V160H886V232H832Z" fill="#A89160"/>
-  <path d="M886 232V118H942V232H886Z" fill="#D2B48C"/>
-  <path d="M942 232V150H998V232H942Z" fill="#C7B28B"/>
-  <path d="M998 232V96H1056V232H998Z" fill="#A89160"/>
-  <path d="M1056 232V166H1110V232H1056Z" fill="#D2B48C"/>
-  <path d="M1110 232V130H1150V232H1110Z" fill="#C7B28B"/>
+  <!-- Chicago skyline silhouette -->
+  <path d="M0 320H1600V480H0V320Z" fill="url(#water)"/>
+  <path d="M88 324V236H128V324H88Z" fill="#203022"/>
+  <path d="M128 324V196H174V324H128Z" fill="#2A3A25"/>
+  <path d="M174 324V274H220V324H174Z" fill="#223223"/>
+  <path d="M220 324V168H268V324H220Z" fill="#30422B"/>
+  <path d="M268 324V216H318V324H268Z" fill="#253626"/>
+  <path d="M318 324V140H372V324H318Z" fill="#35502F"/>
+  <path d="M372 324V188H428V324H372Z" fill="#273726"/>
+  <path d="M428 324V112H486V324H428Z" fill="#2E4130"/>
+  <path d="M486 324V214H544V324H486Z" fill="#233425"/>
+  <path d="M544 324V160H602V324H544Z" fill="#33482D"/>
+  <path d="M602 324V102H664V324H602Z" fill="#2C3D2A"/>
+  <path d="M664 324V188H724V324H664Z" fill="#233225"/>
+  <path d="M724 324V136H784V324H724Z" fill="#33452F"/>
+  <path d="M784 324V218H846V324H784Z" fill="#243524"/>
+  <path d="M846 324V92H914V324H846Z" fill="#2E4030"/>
+  <path d="M914 324V168H974V324H914Z" fill="#223122"/>
+  <path d="M974 324V126H1040V324H974Z" fill="#33462D"/>
+  <path d="M1040 324V196H1108V324H1040Z" fill="#243424"/>
+  <path d="M1108 324V76H1174V324H1108Z" fill="#3A5535"/>
+  <path d="M1174 324V150H1242V324H1174Z" fill="#273627"/>
+  <path d="M1242 324V176H1308V324H1242Z" fill="#31432D"/>
+  <path d="M1308 324V132H1374V324H1308Z" fill="#233326"/>
+  <path d="M1374 324V198H1440V324H1374Z" fill="#2C3E2C"/>
+  <path d="M1440 324V166H1510V324H1440Z" fill="#243424"/>
 
-  <circle cx="1028" cy="96" r="34" fill="#D2B48C"/>
-  <path d="M1028 63L1036 88L1060 88L1040 102L1048 127L1028 112L1008 127L1016 102L996 88L1020 88L1028 63Z" fill="#556B2F"/>
+  <!-- Willis Tower antenna -->
+  <path d="M600 102V58H614V102H600Z" fill="#D2B48C"/>
+  <path d="M607 26L613 58H601L607 26Z" fill="#D2B48C"/>
 
-  <text x="78" y="112" fill="#F5F5F5" font-family="Segoe UI, Arial, sans-serif" font-size="56" font-weight="800">Chicago Tech</text>
-  <text x="78" y="164" fill="#D2B48C" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="700">Army Themed</text>
-  <text x="78" y="216" fill="#F5F5F5" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="500">WPF • SQLite • LocalDB • C# • .NET</text>
-  <text x="78" y="252" fill="#F5F5F5" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600">Military Gear Inventory</text>
+  <!-- Navy Pier / shoreline -->
+  <path d="M140 332C280 302 390 342 524 320C646 300 770 340 900 314C1032 288 1140 330 1278 304C1370 286 1452 296 1600 266V480H0V352C66 342 104 338 140 332Z" fill="#0B3650" opacity="0.65"/>
+  <path d="M0 374C156 340 266 388 396 364C528 340 624 372 760 344C896 316 1000 380 1142 350C1268 324 1376 350 1600 312V480H0V374Z" fill="#0A2A3D" opacity="0.75"/>
 
-  <rect x="78" y="266" width="240" height="8" rx="4" fill="#D2B48C"/>
-  <path d="M72 54H1128" stroke="#D2B48C" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="10 10"/>
+  <!-- Chicago star emblem with army colors -->
+  <g transform="translate(1270 184)">
+    <circle cx="0" cy="0" r="72" fill="#D2B48C"/>
+    <circle cx="0" cy="0" r="58" fill="#556B2F"/>
+    <path d="M0 -36L10 -10L36 -10L15 6L24 32L0 16L-24 32L-15 6L-36 -10L-10 -10L0 -36Z" fill="#D2B48C"/>
+    <path d="M-44 0H44" stroke="#D2B48C" stroke-width="4" opacity="0.8"/>
+    <path d="M0 -44V44" stroke="#D2B48C" stroke-width="4" opacity="0.8"/>
+  </g>
+
+  <!-- tech overlay -->
+  <rect x="92" y="52" width="530" height="226" rx="22" fill="#111B1F" fill-opacity="0.22" stroke="#D2B48C" stroke-opacity="0.22"/>
+  <path d="M118 110H578" stroke="#D2B48C" stroke-opacity="0.3" stroke-width="2"/>
+  <path d="M118 142H540" stroke="#D2B48C" stroke-opacity="0.2" stroke-width="1"/>
+  <path d="M118 172H462" stroke="#D2B48C" stroke-opacity="0.2" stroke-width="1"/>
+  <path d="M118 202H512" stroke="#D2B48C" stroke-opacity="0.2" stroke-width="1"/>
+  <text x="122" y="104" fill="#F5F5F5" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800">Chicago Tech</text>
+  <text x="122" y="162" fill="#D2B48C" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700">Army Themed</text>
+  <text x="122" y="212" fill="#F5F5F5" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="500">WPF • SQLite • LocalDB • C# • .NET</text>
+  <text x="122" y="246" fill="#F5F5F5" font-family="Segoe UI, Arial, sans-serif" font-size="24" font-weight="600">Military Gear Inventory</text>
+
+  <!-- accents -->
+  <rect x="122" y="260" width="230" height="8" rx="4" fill="#D2B48C"/>
+  <circle cx="536" cy="74" r="6" fill="#D2B48C"/>
+  <circle cx="554" cy="74" r="6" fill="#556B2F"/>
+  <circle cx="572" cy="74" r="6" fill="#D2B48C"/>
 </svg>
