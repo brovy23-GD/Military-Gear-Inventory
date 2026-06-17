@@ -1,7 +1,7 @@
 # Military Gear Inventory
 
 <p align="center">
-  <img src="assets/chicago-tech-army-banner.svg" alt="Chicago Tech Army Themed Banner" />
+  <img src="assets/copilot-image-231072.png" alt="Chicago Tech Army Themed Banner" />
 </p>
 
 <p align="center">
